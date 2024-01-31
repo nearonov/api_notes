@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'post_in',
     'accounts',
     'notes',
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
