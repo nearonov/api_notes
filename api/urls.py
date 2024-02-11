@@ -1,10 +1,26 @@
+from api.views import NoteViewSet
+from rest_framework.routers import DefaultRouter
 from django.urls import path
-from api.views import NoteListView, NoteDetailView
 from rest_framework.urlpatterns import format_suffix_patterns
 
-urlpatterns =[
-    path('notes/', NoteListView.as_view()),
-    path('notes/<int:pk>/', NoteDetailView.as_view(), name='notes-detail')
-]
+router = DefaultRouter()
+router.register('notes', NoteViewSet, basename='notes')
+urlpatterns = router.urls
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+# notes_list = NoteViewSet.as_view({
+#     'get': 'list',
+#     'post': 'create'
+# })
+# notes_detail = NoteViewSet.as_view({
+#     'get': 'retrieve',
+#     'put': 'update',
+#     'patch': 'partial_update',
+#     'delete': 'destroy'
+# })
+#
+# urlpatterns = [
+#     path('notes/', notes_list, name='notes-list'),
+#     path('notes/<int:pk>/', notes_detail, name='notes-detail')
+# ]
+#
+# urlpatterns = format_suffix_patterns(urlpatterns)
